@@ -1,0 +1,15 @@
+{
+  "name": "farmware",
+  "version": "1.0.0",
+  "description": "",
+  "main": "STLExport.js",
+  "dependencies": {
+    "threejs-export-stl": "0.0.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

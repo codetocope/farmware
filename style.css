@@ -1,0 +1,18 @@
+canvas {
+    position: absolute;
+}
+
+#gui {
+    position: absolute;
+    top: 1em;
+    left: 1em;
+}
+
+#gui li:not(.folder) {
+    font-size: 18;
+    height: 30px;
+}
+
+#gui .function {
+    background-color: rgb(32, 95, 158);
+}
