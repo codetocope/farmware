@@ -69,7 +69,7 @@ gui.add(obj, "name").listen();
 
 var objOptions = {
     fileName: "default",
-    type: 'Ring',
+    type: '',
     scale1: 30,
     scale2: 30,
     scale3: 30,

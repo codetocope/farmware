@@ -96,12 +96,11 @@ function loadOBJ(objName) {
                     mesh.rotation.z = Math.PI;
 
                     mesh.position.y = 1.1;
-                    mesh.position.z = 1.7;
+                    mesh.position.z = 1.69;
 
                     loadedInsets[0] = mesh;
                     
                 } else if (objOptions.type == 'Bracelet' && mesh.name != 'braceletBase') {
-                    mesh.position.y = 0.1;
                     loadedInsets[currInsetIndex] = mesh;
 
                     //console.log(currInsetIndex)
@@ -150,8 +149,7 @@ function updateModel(baseName) {
 
     loadOBJ(baseName);
     //console.log(group);
-
-    //group.scale.set(scale, scale, scale);
+    
     scene.add(group);
 
 }
