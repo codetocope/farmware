@@ -77,8 +77,8 @@ function loadOBJ(objName) {
     // model
     var mesh;
     var loader = new THREE.OBJLoader(manager);
-    loader.load('obj/individualComponents/' + objName + '.obj', function (object) {
-        //console.log(object);
+    loader.load('/obj/individualComponents/' + objName + '.obj', function (object) {
+        console.log(object);
         object.traverse(function (child) {
 
             if (child instanceof THREE.Mesh) {
@@ -99,14 +99,21 @@ function loadOBJ(objName) {
                     mesh.position.z = 1.69;
 
                     loadedInsets[0] = mesh;
-                    
-                } else if (objOptions.type == 'Bracelet' && mesh.name != 'braceletBase') {
+
+                } else if (objOptions.type.indexOf('Bracelet') > -1 && mesh.name != 'braceletBase') {
                     loadedInsets[currInsetIndex] = mesh;
 
-                    //console.log(currInsetIndex)
-                    mesh.rotation.y = Math.PI;
-                    mesh.position.x = currInsetIndex * 3.75 - 2.8335;
-                    currInsetIndex++;                    
+                    if (mesh.name == "waveInset") {
+                        mesh.position.x = 0;
+                        mesh.position.y = 1 - mesh.scale.z;
+                    } else {
+                        //console.log(currInsetIndex)
+                        mesh.rotation.y = Math.PI;
+                        mesh.position.x = currInsetIndex * 3.75 - 2.8335;
+                        currInsetIndex++;
+                    }
+                } else if (objOptions.type == 'Necklace') {
+                    loadedInsets[0] = mesh;
                 }
                 group.add(mesh);
             }
@@ -149,20 +156,29 @@ function updateModel(baseName) {
 
     loadOBJ(baseName);
     //console.log(group);
-    
+
     scene.add(group);
 
 }
 
-function updateModelOptions(opts, multiFlag = false) {
+function updateModelOptions(opts, multiFlag = false, clearAll = false) {
 
     // TODO: find better solution for clearing old options than clearing and loading everytime
 
-    while (group.children.length > 1) {
-        group.remove(group.children[1]);
+    if (clearAll) {
+        while (group.children.length) {
+            group.remove(group.children[0]);
+            loadedInsets = [];
+        }
+    } else {
+        while (group.children.length > 1) {
+            group.remove(group.children[1]);
+            loadedInsets = [];
+        }
     }
 
     if (!multiFlag) { // check if options is an array i.e. there are multiple insets
+        currInsetIndex = 0;
         loadOBJ(opts + 'Inset');
     } else {
         //console.log(opts.length);
@@ -175,13 +191,16 @@ function updateModelOptions(opts, multiFlag = false) {
     }
 }
 
-function setInsetScale(meshIndex, newValue) {
-    loadedInsets[meshIndex].scale.x = loadedInsets[meshIndex].scale.y = loadedInsets[meshIndex].scale.z = newValue;
+function setInsetScale(meshIndex, newValue, axis = 0) {
+    if (axis == 0)
+        loadedInsets[meshIndex].scale.x = loadedInsets[meshIndex].scale.y = loadedInsets[meshIndex].scale.z = newValue;
+    else
+        loadedInsets[meshIndex].scale[axis] = newValue;
 }
 
 function windowResized() {
-    const width = window.innerWidth - 15;
-    const height = window.innerHeight - 15;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
     renderer.setSize(width, height);
