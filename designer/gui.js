@@ -89,7 +89,7 @@ function setUI(type) {
             updateModelOptions(newValue);
         }).name("Inset Shape");
 
-        ringOpt.add(objOptions, "scale1", 28, 34, 1).name('Inset Size').onChange(function (newValue) {
+        ringOpt.add(objOptions, "scale1", 28, 40, 1).name('Inset Size').onChange(function (newValue) {
             objOptions.insetSizes[0] = newValue;
 
             setInsetScale(0, newValue / 30);
