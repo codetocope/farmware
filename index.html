@@ -9,16 +9,16 @@
 </head>
 
 <body>
-    <div class="container-fluid vw-100 vh-100 overflow-hidden">
+    <div class="container-fluid vw-100 vh-100">
         <div class="row d-flex flex-wrap justify-content-around mt-3">
+            <p class="btn btn-primary w-25" id="designerLink">Design</p>
             <p class="btn btn-primary w-25" id="monitorLink">Monitor</p>
-            <p class="btn btn-primary w-25" id="designerLink">Designer</p>
+            <p class="btn btn-primary w-25" id="playLink">Play</p>            
         </div>
 
         <!--<a href = "designer/index.html">Designer</a> <a href="monitor/index.html">Monitor</a>-->
         <div class="row d-flex justify-content-around vw-100 mb-5" style="height: 90%;">
-            <iframe class="col-lg-12 col-md-12 col-sm-12 border-0" src="designer/index.html"></iframe>
-            
+            <iframe class="col-lg-12 col-md-12 col-sm-12 border-0" src="designer/index.html"></iframe>            
         </div>
        
         <!--
@@ -30,15 +30,17 @@
 
     <script>
             var iframe = document.getElementsByTagName('iframe')[0];
-            //iframe.width = window.innerWidth - 30;
-            //iframe.height = window.innerHeight - 90;
+            document.getElementById('designerLink').addEventListener('click', function (e) {
+                iframe.src = "designer/index.html";
+            });
+            document.getElementById('playLink').addEventListener('click', function (e) {
+                iframe.src = "play/index.html";
+            });
             document.getElementById('monitorLink').addEventListener('click', function (e) {
                 iframe.src = "monitor/index.html";
             });
         
-            document.getElementById('designerLink').addEventListener('click', function (e) {
-                iframe.src = "designer/index.html";
-            });
+            
         </script>
 </body>
 
