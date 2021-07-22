@@ -10,7 +10,7 @@ const controls = new THREE.OrbitControls(camera, renderer.domElement);
 var ringSelectedInset = null;
 
 const ambLight = new THREE.AmbientLight(0xffffff, .35);
-const skyColor = 0xB1E1FF; // light blue
+const skyColor = 0xB1E1FF; // light blue  // TODO: Change color
 const groundColor = 0xB97A20; // brownish orange
 
 var loadedInsets = [];
