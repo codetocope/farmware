@@ -104,6 +104,7 @@ function loadOBJ(objName) {
 
                 } else if (objOptions.type.indexOf('Bracelet') > -1 && mesh.name != 'braceletBase') {
                     loadedInsets[currInsetIndex] = mesh; // Why is this different?
+                    // Because not all bracelets have insets? Test this whilst adding a similar object
 
                     if (mesh.name == "waveInset") {
                         mesh.position.x = 0;
