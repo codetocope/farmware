@@ -1,4 +1,5 @@
 /* NOTE ON OBJ: Make sure no n-sided polygons! OBJ can recognize these as faces, but the THREE.js importer has trouble with these. */
+// Note to self: don't get stuck trying to do this anyways
 
 const OBJLoader = new THREE.OBJLoader();
 
@@ -23,6 +24,7 @@ light.castShadow = true;
 scene.add(ambLight);
 scene.add(light);
 
+// Loads ring by default, does so here 
 loadOBJ('ringBase');
 
 const plane = new THREE.Mesh(
@@ -84,7 +86,7 @@ function loadOBJ(objName) {
             if (child instanceof THREE.Mesh) {
 
                 child.material = defaultMaterial;
-                child.material.side = THREE.DoubleSide;
+                child.material.side = THREE.DoubleSide;  // could not find this in the Three library 
                 var geometry = new THREE.Geometry().fromBufferGeometry(child.geometry);
                 mesh = new THREE.Mesh(geometry, defaultMaterial);
                 mesh.receiveShadow = true;
@@ -101,12 +103,12 @@ function loadOBJ(objName) {
                     loadedInsets[0] = mesh;
 
                 } else if (objOptions.type.indexOf('Bracelet') > -1 && mesh.name != 'braceletBase') {
-                    loadedInsets[currInsetIndex] = mesh;
+                    loadedInsets[currInsetIndex] = mesh; // Why is this different?
 
                     if (mesh.name == "waveInset") {
                         mesh.position.x = 0;
                         mesh.position.y = 1 - mesh.scale.z;
-                    } else {
+                    } else {                            // mesh name == "shapeInset"
                         //console.log(currInsetIndex)
                         mesh.rotation.y = Math.PI;
                         mesh.position.x = currInsetIndex * 3.75 - 2.8335;
@@ -164,7 +166,7 @@ function updateModel(baseName) {
 function updateModelOptions(opts, multiFlag = false, clearAll = false) {
 
     // TODO: find better solution for clearing old options than clearing and loading everytime
-
+        // Update from person much less experienced than OP: this one is probably gonna have to stay a TODO
     if (clearAll) {
         while (group.children.length) {
             group.remove(group.children[0]);
