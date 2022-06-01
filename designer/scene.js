@@ -102,7 +102,7 @@ function loadOBJ(objName) {
 
                     loadedInsets[0] = mesh;
 
-                } else if (objOptions.type.indexOf('Bracelet') > -1 && mesh.name != 'braceletBase') {
+                } else if (objOptions.type.indexOf('Bracelet') > -1 && mesh.name != 'braceletBase') { // Why the != here?
                     loadedInsets[currInsetIndex] = mesh; // Why is this different?
                     // Because not all bracelets have insets? Test this whilst adding a similar object
 
