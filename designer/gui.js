@@ -98,17 +98,17 @@ function setUI(type) {
 
     } else if (type == "Wave Bracelet") {
         const waveBraceletOptions = gui.addFolder("Wave Bracelet Options");
-        updateModelOptions("wave", false);
+        updateModelOptions("wave", false); // False is passed due to wavebracelets having <2 insets, optional third 'clear everything' bool param
         
         waveBraceletOptions.add(customOptions, "waveHeight", 0.1, 2, 0.1).onChange(function (newValue) {
-            setInsetScale(0, newValue, 'z');
+            setInsetScale(0, newValue, 'z'); // setInset always passes newvalue, z is the axis, first digit is the array value of the inset 
         });
     } else if (type == "Shapes Bracelet") {
         const shapesBraceletOpt = gui.addFolder("Shapes Bracelet Options");
 
         shapesBraceletOpt.add(objOptions, "inset1", ['heart', 'circle', 'triangle', 'square']).onChange(function (newValue) {
             objOptions.inset1 = newValue;
-            updateAllInsets();
+            updateAllInsets(); // updates insets
 
             updateModelOptions(objOptions.insets, true);
             //currInsetIndex = 0;
@@ -159,7 +159,7 @@ function setUI(type) {
 
         necklaceOpts.add(neckOpts, "shape", ['pyramids', 'spheres', 'wavy', 'boxy']).onChange(function (newValue){
             neckOpts.shape = newValue;
-            updateModelOptions(newValue + "Neck", false, true);
+            updateModelOptions(newValue + "Neck", false, true); //Clears all previous insets as the third bool 
         });
 
         necklaceOpts.add(neckOpts, "scaleX", 0.3, 2, 0.1).onChange(function (newValue){
