@@ -40,6 +40,18 @@ const defaultMaterial = new THREE.MeshLambertMaterial({
     wireframe: false,
 });
 
+const orangeMaterial = new THREE.MeshLambertMaterial({
+    color: 0xffa500,
+    wireframe: false,
+});
+
+const blackMaterial = new THREE.MeshLambertMaterial({
+    color: 0x000000,
+    wireframe: false,
+});
+
+var currentMaterial = orangeMaterial; 
+
 camera.position.z = 7;
 camera.position.y = 3;
 
@@ -83,7 +95,7 @@ function loadOBJ(objName) {
 
             if (child instanceof THREE.Mesh) {
 
-                child.material = defaultMaterial;
+                child.material = currentMaterial;
                 child.material.side = THREE.DoubleSide;
                 var geometry = new THREE.Geometry().fromBufferGeometry(child.geometry);
                 mesh = new THREE.Mesh(geometry, defaultMaterial);
