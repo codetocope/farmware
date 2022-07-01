@@ -20,6 +20,20 @@ const light = new THREE.PointLight(0xffffff, 0.9, 18);
 light.position.set(0, 6, 0);
 light.castShadow = true;
 
+var matPhoto,
+    sprite,
+    texloader = new THREE.TextureLoader();
+
+texloader.load('images/colortesting.png', 
+  function(tex) {
+  matPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff } );
+  sprite = new THREE.Sprite( matPhoto );
+  }
+);
+
+sprite.set.scale(100, 100, 1);
+scene.add(sprite);
+
 scene.add(ambLight);
 scene.add(light);
 
