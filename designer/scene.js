@@ -28,11 +28,12 @@ texloader.load('images/colortesting.png',
   function(tex) {
   matPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff } );
   sprite = new THREE.Sprite( matPhoto );
+  sprite.scale.set(100, 100, 1);
+  scene.add(sprite);
   }
 );
 
-sprite.scale.set(100, 100, 1);
-scene.add(sprite);
+
 
 scene.add(ambLight);
 scene.add(light);
