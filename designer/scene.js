@@ -1,3 +1,5 @@
+/* NOTE ON OBJ: Make sure no n-sided polygons! OBJ can recognize these as faces, but the THREE.js importer has trouble with these. */
+
 const OBJLoader = new THREE.OBJLoader();
 
 const scene = new THREE.Scene();
@@ -17,26 +19,6 @@ var currInsetIndex = 0;
 const light = new THREE.PointLight(0xffffff, 0.9, 18);
 light.position.set(0, 6, 0);
 light.castShadow = true;
-
-
-
-
-var map = new THREE.TextureLoader();
-var matPhoto;
-var sprite;
-/*map.load(images/'colortesting.png');
-var spr_material = new THREE.SpriteMaterial( { map: map, color: 0xffffff } );
-var sprite = new THREE.Sprite( spr_material ); */
-
-texloader.load('images/colortesting.jpg', 
-  function(tex) {
-  matPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff } );
-  sprite = new THREE.Sprite( matPhoto );
-  //...etc...
-  });
-
-sprite.scale.set( 100 /*imageWidth*/, 100 /*imageHeight*/, 1);
-
 
 scene.add(ambLight);
 scene.add(light);
@@ -64,8 +46,6 @@ camera.position.y = 3;
 
 var group = new THREE.Object3D();
 scene.add(group);
-
-scene.add( sprite );
 
 keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 1.0);
 keyLight.position.set(-100, 0, 100);
@@ -186,7 +166,6 @@ function updateModel(baseName) {
 function updateModelOptions(opts, multiFlag = false, clearAll = false) {
 
     // TODO: find better solution for clearing old options than clearing and loading everytime
-        // Update from person much less experienced than OP: this one is probably gonna have to stay a TODO
     if (clearAll) {
         while (group.children.length) {
             group.remove(group.children[0]);
