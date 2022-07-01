@@ -1,7 +1,6 @@
 /* NOTE ON OBJ: Make sure no n-sided polygons! OBJ can recognize these as faces, but the THREE.js importer has trouble with these. */
-
 const OBJLoader = new THREE.OBJLoader();
-const imageLoader = new THREE.ImageLoader();
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
