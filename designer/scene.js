@@ -1,7 +1,7 @@
 /* NOTE ON OBJ: Make sure no n-sided polygons! OBJ can recognize these as faces, but the THREE.js importer has trouble with these. */
 
 const OBJLoader = new THREE.OBJLoader();
-
+const imageLoader = new THREE.ImageLoader();
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
@@ -75,6 +75,27 @@ scene.add(gridHelper);
 renderer.setSize(window.innerWidth - 15, window.innerHeight - 15);
 renderer.setClearColor(0x242d45, 1);
 document.body.appendChild(renderer.domElement);
+
+loader.load(
+	// resource URL
+	'images/hand.png',
+
+	// onLoad callback
+	function ( image ) {
+		// use the image, e.g. draw part of it on a canvas
+		const canvas = document.createElement( 'canvas' );
+		const context = canvas.getContext( '3d' );
+		context.drawImage( image, 100, 100, 100 );
+	},
+
+	// onProgress callback currently not supported
+	undefined,
+
+	// onError callback
+	function () {
+		console.error( 'An error happened.' );
+	}
+);
 
 function loadOBJ(objName) {
 
