@@ -18,6 +18,14 @@ const light = new THREE.PointLight(0xffffff, 0.9, 18);
 light.position.set(0, 6, 0);
 light.castShadow = true;
 
+const map = new THREE.TextureLoader().load( 'images/hand.png' );
+const material = new THREE.SpriteMaterial( { map: map } );
+
+const sprite = new THREE.Sprite( material );
+sprite.scale.set(imageWidth,imageHeight,1);
+
+scene.add( sprite );
+
 scene.add(ambLight);
 scene.add(light);
 
