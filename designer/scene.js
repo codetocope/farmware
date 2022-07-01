@@ -20,7 +20,7 @@ light.castShadow = true;
 
 var map = new THREE.TextureLoader();
 map.load(images/'colortesting.png');
-const spr_material = new THREE.SpriteMaterial( { map: map, color: 0xffffff } );
+var spr_material = new THREE.SpriteMaterial( { map: map, color: 0xffffff } );
 var sprite = new THREE.Sprite( spr_material );
 sprite.scale.set( 100 /*imageWidth*/, 100 /*imageHeight*/, 1);
 
