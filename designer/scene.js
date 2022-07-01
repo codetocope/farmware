@@ -85,7 +85,7 @@ imageLoader.load(
 		// use the image, e.g. draw part of it on a canvas
 		const canvas = document.createElement( 'canvas' );
 		const context = canvas.getContext( '3d' );
-		context.drawImage( image, 1, 1, 1 );
+		context.drawImage( image, 100, 100, 100 );
 	},
 
 	// onProgress callback currently not supported
