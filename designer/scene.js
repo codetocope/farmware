@@ -2,7 +2,6 @@
 
 const OBJLoader = new THREE.OBJLoader();
 const imageLoader = new THREE.ImageLoader();
-const canvas = document.querySelector('#threejs-canvas');
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({canvas});
@@ -41,16 +40,6 @@ const defaultMaterial = new THREE.MeshLambertMaterial({
     wireframe: false,
 });
 
-const orangeMaterial = new THREE.MeshLambertMaterial({
-    color: 0xffa500,
-    wireframe: false,
-});
-
-const blackMaterial = new THREE.MeshLambertMaterial({
-    color: 0x000000,
-    wireframe: false,
-});
-
 var currentMaterial = orangeMaterial; 
 
 camera.position.z = 7;
@@ -77,26 +66,6 @@ renderer.setSize(window.innerWidth - 15, window.innerHeight - 15);
 renderer.setClearColor(0x242d45, 1);
 document.body.appendChild(renderer.domElement);
 
-imageLoader.load(
-	// resource URL
-	'images/hand.png',
-
-	// onLoad callback
-	function ( image ) {
-		// use the image, e.g. draw part of it on a canvas
-		const canvas = document.createElement( 'canvas' );
-		const context = canvas.getContext( '2d' );
-		context.drawImage( image, 100, 100 );
-	},
-
-	// onProgress callback currently not supported
-	undefined,
-
-	// onError callback
-	function () {
-		console.error( 'An error happened.' );
-	}
-);
 
 function loadOBJ(objName) {
 
