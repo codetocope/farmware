@@ -24,16 +24,14 @@ var matPhoto,
     sprite,
     texloader = new THREE.TextureLoader();
 
-texloader.load('images/colortesting.png', 
+texloader.load('/images/colortesting.png', 
   function(tex) {
-  matPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff } );
-  sprite = new THREE.Sprite( matPhoto );
-  sprite.scale.set(100, 100, 1);
-  scene.add(sprite);
+    matPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff } );
+    sprite = new THREE.Sprite( matPhoto );
+    sprite.scale.set(10, 10, 1);
+    scene.add(sprite);
   }
 );
-
-
 
 scene.add(ambLight);
 scene.add(light);
