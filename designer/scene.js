@@ -1,4 +1,3 @@
-/* NOTE ON OBJ: Make sure no n-sided polygons! OBJ can recognize these as faces, but the THREE.js importer has trouble with these. */
 const OBJLoader = new THREE.OBJLoader();
 
 const scene = new THREE.Scene();
@@ -9,7 +8,7 @@ const controls = new THREE.OrbitControls(camera, renderer.domElement);
 var ringSelectedInset = null;
 
 const ambLight = new THREE.AmbientLight(0xffffff, .35);
-const skyColor = 0x87CEEB; // light blue  // TODO: Change color
+const skyColor = 0xB1E1FF; // light blue  // TODO: Change color
 const groundColor = 0xB97A20; // brownish orange
 
 var loadedInsets = [];
@@ -22,6 +21,7 @@ light.castShadow = true;
 scene.add(ambLight);
 scene.add(light);
 
+// Loads ring by default, does so here 
 loadOBJ('ringBase');
 
 const plane = new THREE.Mesh(
@@ -38,8 +38,6 @@ const defaultMaterial = new THREE.MeshLambertMaterial({
     color: 0xffffff,
     wireframe: false,
 });
-
-var currentMaterial = orangeMaterial; 
 
 camera.position.z = 7;
 camera.position.y = 3;
@@ -65,7 +63,6 @@ renderer.setSize(window.innerWidth - 15, window.innerHeight - 15);
 renderer.setClearColor(0x242d45, 1);
 document.body.appendChild(renderer.domElement);
 
-
 function loadOBJ(objName) {
 
     var manager = new THREE.LoadingManager();
@@ -85,8 +82,8 @@ function loadOBJ(objName) {
 
             if (child instanceof THREE.Mesh) {
 
-                child.material = currentMaterial;
-                child.material.side = THREE.DoubleSide;
+                child.material = defaultMaterial;
+                child.material.side = THREE.DoubleSide;  // could not find this in the Three library 
                 var geometry = new THREE.Geometry().fromBufferGeometry(child.geometry);
                 mesh = new THREE.Mesh(geometry, defaultMaterial);
                 mesh.receiveShadow = true;
@@ -102,13 +99,14 @@ function loadOBJ(objName) {
 
                     loadedInsets[0] = mesh;
 
-                } else if (objOptions.type.indexOf('Bracelet') > -1 && mesh.name != 'braceletBase') {
-                    loadedInsets[currInsetIndex] = mesh;
+                } else if (objOptions.type.indexOf('Bracelet') > -1 && mesh.name != 'braceletBase') { // Why the != here?
+                    loadedInsets[currInsetIndex] = mesh; // Why is this different?
+                    // Because not all bracelets have insets? Test this whilst adding a similar object
 
                     if (mesh.name == "waveInset") {
                         mesh.position.x = 0;
                         mesh.position.y = 1 - mesh.scale.z;
-                    } else {
+                    } else {                            // mesh name == "shapeInset"
                         //console.log(currInsetIndex)
                         mesh.rotation.y = Math.PI;
                         mesh.position.x = currInsetIndex * 3.75 - 2.8335;
@@ -166,7 +164,7 @@ function updateModel(baseName) {
 function updateModelOptions(opts, multiFlag = false, clearAll = false) {
 
     // TODO: find better solution for clearing old options than clearing and loading everytime
-
+        // Update from person much less experienced than OP: this one is probably gonna have to stay a TODO
     if (clearAll) {
         while (group.children.length) {
             group.remove(group.children[0]);
