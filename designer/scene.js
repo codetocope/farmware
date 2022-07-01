@@ -31,7 +31,7 @@ texloader.load('images/colortesting.png',
   }
 );
 
-sprite.set.scale(100, 100, 1);
+sprite.scale.set(100, 100, 1);
 scene.add(sprite);
 
 scene.add(ambLight);
