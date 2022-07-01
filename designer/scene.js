@@ -19,12 +19,11 @@ light.position.set(0, 6, 0);
 light.castShadow = true;
 
 const map = new THREE.TextureLoader().load( 'images/hand.png' );
-const material = new THREE.SpriteMaterial( { map: map } );
+const spr_material = new THREE.SpriteMaterial( { map: map } );
 
-const sprite = new THREE.Sprite( material );
-sprite.scale.set(imageWidth,imageHeight,1);
+var sprite = new THREE.Sprite( spr_material );
+sprite.scale.set(100, 200, 1);
 
-scene.add( sprite );
 
 scene.add(ambLight);
 scene.add(light);
@@ -52,6 +51,8 @@ camera.position.y = 3;
 
 var group = new THREE.Object3D();
 scene.add(group);
+
+scene.add( sprite );
 
 keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 1.0);
 keyLight.position.set(-100, 0, 100);
