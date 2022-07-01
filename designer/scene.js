@@ -76,7 +76,7 @@ renderer.setSize(window.innerWidth - 15, window.innerHeight - 15);
 renderer.setClearColor(0x242d45, 1);
 document.body.appendChild(renderer.domElement);
 
-loader.load(
+imageLoader.load(
 	// resource URL
 	'images/hand.png',
 
