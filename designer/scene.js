@@ -22,7 +22,7 @@ const map = new THREE.TextureLoader().load( 'images/hand.png' );
 const spr_material = new THREE.SpriteMaterial( { map: map } );
 
 var sprite = new THREE.Sprite( spr_material );
-sprite.scale.set(imageWidth, imageHeight, 1);
+sprite.scale.set( 100 /*imageWidth*/, 100 /*imageHeight*/, 1);
 
 
 scene.add(ambLight);
