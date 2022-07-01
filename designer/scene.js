@@ -18,10 +18,23 @@ const light = new THREE.PointLight(0xffffff, 0.9, 18);
 light.position.set(0, 6, 0);
 light.castShadow = true;
 
+
+
+
 var map = new THREE.TextureLoader();
-map.load(images/'colortesting.png');
+var matPhoto;
+var sprite;
+/*map.load(images/'colortesting.png');
 var spr_material = new THREE.SpriteMaterial( { map: map, color: 0xffffff } );
-var sprite = new THREE.Sprite( spr_material );
+var sprite = new THREE.Sprite( spr_material ); */
+
+texloader.load('images/colortesting.jpg', 
+  function(tex) {
+  matPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff } );
+  sprite = new THREE.Sprite( matPhoto );
+  //...etc...
+  });
+
 sprite.scale.set( 100 /*imageWidth*/, 100 /*imageHeight*/, 1);
 
 
