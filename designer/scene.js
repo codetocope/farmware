@@ -24,7 +24,9 @@ const light = new THREE.PointLight(0xffffff, 0.9, 18);
 light.position.set(0, 6, 0);
 light.castShadow = true;
 
-var matPhoto,
+var handPhoto,
+    wristPhoto,
+    neckPhoto,
     handsprite,
     wristsprite, 
     necksprite,
@@ -32,8 +34,8 @@ var matPhoto,
 
 texloader.load('/images/colortesting.png', 
   function(tex) {
-    matPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff } );
-    handsprite = new THREE.Sprite( matPhoto );
+    handPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff } );
+    handsprite = new THREE.Sprite( handPhoto );
     handsprite.scale.set(10, 10, 1);
     scene.add(handsprite);
     handsprite.position.set(0, 5, -10);
