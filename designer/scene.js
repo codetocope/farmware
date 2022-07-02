@@ -36,7 +36,7 @@ texloader.load('/images/colortesting.png',
     handsprite = new THREE.Sprite( matPhoto );
     handsprite.scale.set(10, 10, 1);
     scene.add(handsprite);
-    handsprite.position.set(0, 10, -10);
+    handsprite.position.set(0, 5, -10);
   }
 );
 
