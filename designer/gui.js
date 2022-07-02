@@ -19,7 +19,8 @@ var objOptions = {
     inset2: 'circle',
     inset3: 'circle',
     insets: [],
-    insetSizes: [30, 30, 30]
+    insetSizes: [30, 30, 30],
+    color: 'white'
 };
 
 function updateAllInsets() {
@@ -89,9 +90,12 @@ function setUI(type) {
             updateModelOptions(newValue);
         }).name("Inset Shape");
 
+        ringOpt.add(objOptions, "color", ['white', 'black', 'orange']).onChange(function (newValue) {
+            setColor(newValue);
+        }).name("Color");
+
         ringOpt.add(objOptions, "scale1", 28, 40, 1).name('Inset Size').onChange(function (newValue) {
             objOptions.insetSizes[0] = newValue;
-
             setInsetScale(0, newValue / 30);
         });
         ringOpt.open();
@@ -99,12 +103,21 @@ function setUI(type) {
     } else if (type == "Wave Bracelet") {
         const waveBraceletOptions = gui.addFolder("Wave Bracelet Options");
         updateModelOptions("wave", false);
+
+        waveBraceletOptions.add(objOptions, "color", ['white', 'black', 'orange']).onChange(function (newValue) {
+            setColor(newValue);
+        }).name("Color");
         
         waveBraceletOptions.add(customOptions, "waveHeight", 0.1, 2, 0.1).onChange(function (newValue) {
             setInsetScale(0, newValue, 'z');
         });
     } else if (type == "Shapes Bracelet") {
         const shapesBraceletOpt = gui.addFolder("Shapes Bracelet Options");
+
+        shapesBraceletOpt.add(objOptions, "color", ['white', 'black', 'orange']).onChange(function (newValue) {
+            setColor(newValue);
+        }).name("Color");
+
 
         shapesBraceletOpt.add(objOptions, "inset1", ['heart', 'circle', 'triangle', 'square']).onChange(function (newValue) {
             objOptions.inset1 = newValue;
@@ -116,9 +129,7 @@ function setUI(type) {
 
         shapesBraceletOpt.add(objOptions, "scale1", 28, 34, 1).name('Inset Size 1').onChange(function (newValue) {
             objOptions.insetSizes[0] = newValue;
-
             setInsetScale(0, newValue / 30);
-
         });
 
 
@@ -130,11 +141,10 @@ function setUI(type) {
             //currInsetIndex = 1;
         }).name("Inset Shape 2");
 
+
         shapesBraceletOpt.add(objOptions, "scale2", 28, 34, 1).name('Inset Size 2').onChange(function (newValue) {
             objOptions.insetSizes[1] = newValue;
-
             setInsetScale(1, newValue / 30);
-
         });
 
 
@@ -146,11 +156,10 @@ function setUI(type) {
             //currInsetIndex = 2;
         }).name("Inset Shape 3");
 
+
         shapesBraceletOpt.add(objOptions, "scale3", 28, 34, 1).name('Inset Size 3').onChange(function (newValue) {
             objOptions.insetSizes[2] = newValue;
-
             setInsetScale(2, newValue / 30);
-
         });
 
         shapesBraceletOpt.open();
@@ -161,6 +170,10 @@ function setUI(type) {
             neckOpts.shape = newValue;
             updateModelOptions(newValue + "Neck", false, true);
         });
+
+        necklaceOpts.add(objOptions, "color", ['white', 'black', 'orange']).onChange(function (newValue) {
+            setColor(newValue);
+        }).name("Color");
 
         necklaceOpts.add(neckOpts, "scaleX", 0.3, 2, 0.1).onChange(function (newValue){
             neckOpts.scaleX = newValue;
@@ -178,5 +191,4 @@ function setUI(type) {
         }).name("Z Scale");
 
     } 
-
 }

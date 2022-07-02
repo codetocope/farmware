@@ -13,6 +13,10 @@ const ambLight = new THREE.AmbientLight(0xffffff, .35);
 const skyColor = 0xB1E1FF; // light blue  // TODO: Change color
 const groundColor = 0xB97A20; // brownish orange
 
+const materialBlack = new THREE.Color(0x303030);
+const materialWhite = new THREE.Color(0xdbdbdb);
+const materialOrange = new THREE.Color(0xfc7b03);
+
 var loadedInsets = [];
 var currInsetIndex = 0;
 
@@ -37,6 +41,8 @@ scene.add(ambLight);
 scene.add(light);
 
 // Loads ring by default, does so here 
+document.addEventListener("keydown", onDocumentKeyDown, false);
+
 loadOBJ('ringBase');
 
 const plane = new THREE.Mesh(
@@ -87,12 +93,11 @@ function loadOBJ(objName) {
 
     };
 
-
     // model
     var mesh;
     var loader = new THREE.OBJLoader(manager);
     loader.load('/obj/individualComponents/' + objName + '.obj', function (object) {
-        console.log(object);
+        //console.log(object);
         object.traverse(function (child) {
 
             if (child instanceof THREE.Mesh) {
@@ -104,6 +109,7 @@ function loadOBJ(objName) {
                 mesh.receiveShadow = true;
                 mesh.name = objName;
                 mesh.castShadow = true;
+                //mesh.material.color.set(materialOrange);
 
                 if (objOptions.type == 'Ring' && mesh.name != 'ringBase') {
                     mesh.rotation.x = Math.PI * -0.5;
@@ -205,6 +211,34 @@ function updateModelOptions(opts, multiFlag = false, clearAll = false) {
     }
 }
 
+function setColor(color){
+    
+    for (var c in group.children) {
+        var m = group.children[c];
+
+        if (color == 'white')
+            m.material.color.set(materialWhite);
+        else if(color == 'orange')
+            m.material.color.set(materialOrange);
+        else if(color == 'black')
+            m.material.color.set(materialBlack);
+    }
+}
+
+function setPreview (type, show = false) {
+    // get preview images
+    // switch camera perspective (straight on?)
+
+    var currCameraRot = new THREE.Vector3();
+    camera.getWorldDirection(currCameraRot);
+
+    if (show) {
+        camera.rotation.x = 0;
+    } else {
+        camera.rotation = currCameraRot;
+    }
+}
+
 function setInsetScale(meshIndex, newValue, axis = 0) {
     if (axis == 0)
         loadedInsets[meshIndex].scale.x = loadedInsets[meshIndex].scale.y = loadedInsets[meshIndex].scale.z = newValue;
@@ -219,6 +253,17 @@ function windowResized() {
     camera.updateProjectionMatrix();
     renderer.setSize(width, height);
     setCanvasDimensions(renderer.domElement, width, height);
+}
+
+function onDocumentKeyDown(event) {
+    var keyCode = event.which;
+    
+    if (keyCode == 80){
+        setPreview(0, true);
+    }
+    if (keyCode == 83){
+        setPreview(0, false);
+    }
 }
 
 function animate() {
