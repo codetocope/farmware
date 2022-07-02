@@ -25,15 +25,18 @@ light.position.set(0, 6, 0);
 light.castShadow = true;
 
 var matPhoto,
-    sprite,
+    handsprite,
+    wristsprite, 
+    necksprite,
     texloader = new THREE.TextureLoader();
 
 texloader.load('/images/colortesting.png', 
   function(tex) {
     matPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff } );
-    sprite = new THREE.Sprite( matPhoto );
-    sprite.scale.set(10, 10, 1);
-    scene.add(sprite);
+    handsprite = new THREE.Sprite( matPhoto );
+    handsprite.scale.set(10, 10, 1);
+    scene.add(handsprite);
+    handsprite.position.set(0, -50, 0);
   }
 );
 
