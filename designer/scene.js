@@ -42,7 +42,7 @@ texloader.load('/images/hand.png',
   }
 );
 
-handsprite.transparency = true;
+handPhoto.transparency = true;
 
 scene.add(ambLight);
 scene.add(light);
