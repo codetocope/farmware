@@ -40,10 +40,9 @@ texloader.load('/images/hand.png',
     scene.add(handsprite);
     handsprite.position.set(0, 5, -10);
     handPhoto.transparency = true;
-    scene.remove(handsprite);
   }
 );
-
+scene.remove(handsprite);
 
 
 
