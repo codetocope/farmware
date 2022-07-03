@@ -25,8 +25,8 @@ light.position.set(0, 6, 0);
 light.castShadow = true;
 
 var texloader = new THREE.TextureLoader();
-static var handPhoto;
-static var handsprite;
+var handPhoto;
+var handsprite;
 
 texloader.load('/images/hand.png', 
   function(tex) {
