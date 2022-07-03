@@ -40,21 +40,11 @@ texloader.load('/images/hand.png',
     scene.add(handsprite);
     handsprite.position.set(0, 5, -10);
     handPhoto.transparency = true;
+    scene.remove(handsprite);
   }
 );
 
 
-texloader.load('/images/arm.png', 
-  function(tex) {
-    handPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff } );
-    handsprite = new THREE.Sprite( handPhoto );
-    handsprite.scale.set(10, 10, 1);
-    scene.add(handsprite);
-    handsprite.position.set(0, 5, -10);
-    handPhoto.transparency = true;
-    handPhoto.opacity = .5;
-  }
-);
 
 
 scene.add(ambLight);
