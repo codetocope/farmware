@@ -40,10 +40,10 @@ texloader.load('/images/hand.png',
     scene.add(handsprite);
     handsprite.position.set(0, 5, -10);
     handPhoto.transparency = true;
-    handPhoto.opacity = 0.0;
   }
 );
 
+handPhoto.opacity = 0.5;
 
 scene.add(ambLight);
 scene.add(light);
