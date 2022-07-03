@@ -39,7 +39,7 @@ texloader.load('/images/colortesting.png',
     handsprite.scale.set(10, 10, 1);
     scene.add(handsprite);
     handsprite.position.set(0, 5, -10);
-    handPhoto.transparent = true;
+    handsprite.transparent = true;
   }
 );
 
