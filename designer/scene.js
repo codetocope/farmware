@@ -24,13 +24,9 @@ const light = new THREE.PointLight(0xffffff, 0.9, 18);
 light.position.set(0, 6, 0);
 light.castShadow = true;
 
-var handPhoto,
-    wristPhoto,
-    neckPhoto,
-    handsprite,
-    wristsprite, 
-    necksprite,
-    texloader = new THREE.TextureLoader();
+var texloader = new THREE.TextureLoader();
+static handPhoto;
+static handsprite;
 
 texloader.load('/images/hand.png', 
   function(tex) {
@@ -42,6 +38,7 @@ texloader.load('/images/hand.png',
     handPhoto.transparency = true;
   }
 );
+handPhoto.opacity = .5;
 scene.remove(handsprite);
 
 
