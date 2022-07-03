@@ -32,7 +32,7 @@ var handPhoto,
     necksprite,
     texloader = new THREE.TextureLoader();
 
-texloader.load('/images/colortesting.png', 
+texloader.load('/images/hand.png', 
   function(tex) {
     handPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff } );
     handsprite = new THREE.Sprite( handPhoto );
