@@ -60,7 +60,7 @@ scene.add (handsprite);
 handsprite.scale.set(10, 10, 1);
 handsprite.position.set(0, 5, -10);
 handmaterial.opacity = 0.1;
-
+handmaterial.opacity = 1;
 scene.add(ambLight);
 scene.add(light);
 
