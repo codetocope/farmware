@@ -39,6 +39,12 @@
             document.getElementById('monitorLink').addEventListener('click', function (e) {
                 iframe.src = "monitor/index.html";
             });     
+
+            window.addEventListener('keydown', function(e) { // this is needed to pass the keyboard event from the parent window to the iframe
+                iframe.contentDocument.dispatchEvent(
+                    new KeyboardEvent('keydown', {key: e.which})
+                );
+            });
         </script>
 </body>
 

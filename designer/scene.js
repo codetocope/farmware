@@ -35,11 +35,8 @@ texloader.load('/images/hand.png',
     handsprite.scale.set(10, 10, 1);
     scene.add(handsprite);
     handsprite.position.set(0, 5, -10);
-    handPhoto.transparency = true;
   }
 );
-
-
 
 scene.add(ambLight);
 scene.add(light);
@@ -260,10 +257,11 @@ function windowResized() {
 }
 
 function onDocumentKeyDown(event) {
-    var keyCode = event.which;
+    var keyCode = event.key;
     
     if (keyCode == 80){
         setPreview(0, true);
+        // handphoto.opacity = 1.0 to show, then set opacity to 0.0 to hide
     }
     if (keyCode == 83){
         setPreview(0, false);
