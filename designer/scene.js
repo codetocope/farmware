@@ -24,6 +24,8 @@ const light = new THREE.PointLight(0xffffff, 0.9, 18);
 light.position.set(0, 6, 0);
 light.castShadow = true;
 
+var currentType = "hand";
+
 var texloader = new THREE.TextureLoader();
 var wristLoader = new THREE.TextureLoader(); 
 var bodyLoader = new THREE.TextureLoader(); //not sure this is necessary but just in case;
@@ -45,6 +47,8 @@ texloader.load('/images/hand.png',
     handsprite.opacity = 0.1;
   }
 );
+
+handPhoto.opacity = .25; //this does nothing 
 
 scene.add(ambLight);
 scene.add(light);
@@ -269,11 +273,11 @@ function onDocumentKeyDown(event) {
     
     if (keyCode == 80){
         setPreview(0, true);
-        handPhoto.opacity = 1.0;
+        (currentType + "Photo").opacity = 1.0;
     }
     if (keyCode == 83){
         setPreview(0, false);
-        handPhoto.opacity = 0.0;
+        (currentType + "Photo").opacity = 0.0;
     }
 }
 
