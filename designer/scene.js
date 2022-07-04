@@ -25,8 +25,15 @@ light.position.set(0, 6, 0);
 light.castShadow = true;
 
 var texloader = new THREE.TextureLoader();
+var wristLoader = new THREE.TextureLoader(); 
+var bodyLoader = new THREE.TextureLoader(); //not sure this is necessary but just in case;
+
 var handPhoto,
-    handsprite;
+    handsprite,
+    armPhoto,
+    armsprite,
+    bodyPhoto,
+    bodysprite;
 
 texloader.load('/images/hand.png', 
   function(tex) {
@@ -35,6 +42,7 @@ texloader.load('/images/hand.png',
     handsprite.scale.set(10, 10, 1);
     scene.add(handsprite);
     handsprite.position.set(0, 5, -10);
+    handsprite.opacity = 0.1;
   }
 );
 
@@ -261,10 +269,11 @@ function onDocumentKeyDown(event) {
     
     if (keyCode == 80){
         setPreview(0, true);
-        handphoto.opacity = 0.5;
+        handPhoto.opacity = 1.0;
     }
     if (keyCode == 83){
         setPreview(0, false);
+        handPhoto.opacity = 0.0;
     }
 }
 
