@@ -52,7 +52,7 @@ var armPhoto,
 const handmap = new THREE.TextureLoader().load( '/images/hand.png' );
 const handPhoto = new THREE.SpriteMaterial( { map: handmap, transparent: true } );
 
-handsprite = new THREE.Sprite( testmaterial );
+var handsprite = new THREE.Sprite( testmaterial );
 scene.add (handsprite);
 handPhoto.opacity = .2; 
 
