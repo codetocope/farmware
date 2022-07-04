@@ -51,12 +51,14 @@ var handPhoto,
 //handPhoto.opacity = .25; // Note: Trying to change opacity outside of specifically the loader breaks the website
 //If I instead try to change the loader, as follows:
 
-const map = new THREE.TextureLoader().load( '/images/hand.png' );
-const testmaterial = new THREE.SpriteMaterial( { map: map, transparent: true } );
+const handmap = new THREE.TextureLoader().load( '/images/hand.png' );
+const handmaterial = new THREE.SpriteMaterial( { map: handmap, transparent: true } );
 
-handsprite = new THREE.Sprite( testmaterial );
+handsprite = new THREE.Sprite( handmaterial );
 scene.add (handsprite);
-testmaterial.opacity = .2;
+handsprite.scale.set(10, 10, 1);
+handsprite.position.set(0, 5, -10);
+handmaterial.opacity = .2;
 
 scene.add(ambLight);
 scene.add(light);
