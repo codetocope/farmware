@@ -50,11 +50,11 @@ var armPhoto,
 //If I instead try to change the loader, as follows:
 
 const handmap = new THREE.TextureLoader().load( '/images/hand.png' );
-const handPhoto = new THREE.SpriteMaterial( { map: testmap, transparent: true } );
+const handPhoto = new THREE.SpriteMaterial( { map: handmap, transparent: true } );
 
 handsprite = new THREE.Sprite( testmaterial );
 scene.add (handsprite);
-testmaterial.opacity = .2; 
+handPhoto.opacity = .2; 
 
 scene.add(ambLight);
 scene.add(light);
