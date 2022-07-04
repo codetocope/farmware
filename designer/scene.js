@@ -23,11 +23,11 @@ const light = new THREE.PointLight(0xffffff, 0.9, 18);
 light.position.set(0, 6, 0);
 light.castShadow = true;
 
-var currentType = "hand";
-
 var texloader = new THREE.TextureLoader();
 var wristLoader = new THREE.TextureLoader(); 
 var bodyLoader = new THREE.TextureLoader(); //not sure this is necessary but just in case;
+
+var currentType;
 
 var handPhoto,
     handsprite,
@@ -36,21 +36,26 @@ var handPhoto,
     bodyPhoto,
     bodysprite;
 
-/*texloader.load('/images/hand.png', 
+texloader.load('/images/hand.png', 
   function(tex) {
     handPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff } );
     handsprite = new THREE.Sprite( handPhoto );
     handsprite.scale.set(10, 10, 1);
     scene.add(handsprite);
     handsprite.position.set(0, 5, -10);
-    handPhoto.transparency = true;
-    handPhoto.opacity = .25;
+
+    currentType = handPhoto;
   }
-); */
+); 
 
-//handPhoto.opacity = .25; // Note: Trying to change opacity outside of specifically the loader breaks the website
-//If I instead try to change the loader, as follows:
+// handPhoto.opacity = .25; // Note: Trying to change opacity outside of specifically the loader breaks the website
+// SOLUTION: at this point, handPhoto is undefined simply because it hasn't loaded yet. Changing opacity within load works
+// because the callback function is guaranteed to have completed its logic upon the file load completion, meaning that handPhoto will
+// have an object assigned to it by the time it's called.
 
+// If I instead try to change the loader, as follows:
+
+/*
 const handmap = new THREE.TextureLoader().load( '/images/hand.png' );
 const handmaterial = new THREE.SpriteMaterial( { map: handmap, transparent: true } );
 
@@ -61,12 +66,14 @@ handsprite.scale.set(10, 10, 1);
 handsprite.position.set(0, 5, -10);
 handmaterial.opacity = 0.1;
 handmaterial.opacity = 1;
+*/
+
 scene.add(ambLight);
 scene.add(light);
 
-// Loads ring by default, does so here 
 document.addEventListener("keydown", onDocumentKeyDown, false);
 
+// Loads ring by default, does so here 
 loadOBJ('ringBase');
 
 const plane = new THREE.Mesh(
@@ -111,10 +118,6 @@ document.body.appendChild(renderer.domElement);
 function loadOBJ(objName) {
     
     var manager = new THREE.LoadingManager();
-    manager.onProgress = function (item, loaded, total) {
-        
-        //console.log(item, loaded, total);
-    };
     
     // model
     var mesh;
@@ -178,7 +181,6 @@ function saveFile(fileName) {
     var exportItem = new THREE.Mesh(newGeo, defaultMaterial);
     
     var stlString = exportSTL.parse(exportItem);
-    //console.log(group);
     
     const blob = new Blob([stlString], {
         type: exportSTL.mimeType
@@ -196,7 +198,6 @@ function updateModel(baseName) {
     }
     
     loadOBJ(baseName);
-    //console.log(group);
     scene.add(group);
     
 }
@@ -220,11 +221,8 @@ function updateModelOptions(opts, multiFlag = false, clearAll = false) {
         currInsetIndex = 0;
         loadOBJ(opts + 'Inset');
     } else {
-        //console.log(opts.length);
         currInsetIndex = 0;
         for (var i = 0; i < opts.length; i++) {
-            //currInsetIndex = i;
-            //console.log(currInsetIndex)
             loadOBJ(opts[i] + 'Inset');
         }
     }
@@ -275,13 +273,15 @@ function windowResized() {
 function onDocumentKeyDown(event) {
     var keyCode = event.key;
     
-    if (keyCode == 80){
+    if (keyCode == 80){ // P Key
         setPreview(0, true);
-        (currentType + "material").opacity = 1.0;
+        //handPhoto.opacity = 1.0; // I've set currentType to handPhoto, so either of these work
+        currentType.opacity = 1.0;
     }
-    if (keyCode == 83){
+    if (keyCode == 83){ // S Key
         setPreview(0, false);
-        (currentType + "material").opacity = 0.0;
+        // handPhoto.opacity = 0.0;
+        currentType.opacity = 0.0;
         // Why did this brick the website?
     }
 }
