@@ -30,14 +30,12 @@ var texloader = new THREE.TextureLoader();
 var wristLoader = new THREE.TextureLoader(); 
 var bodyLoader = new THREE.TextureLoader(); //not sure this is necessary but just in case;
 
-var handPhoto,
-    handsprite,
-    armPhoto,
+var armPhoto,
     armsprite,
     bodyPhoto,
     bodysprite;
 
-texloader.load('/images/hand.png', 
+/* texloader.load('/images/hand.png', 
   function(tex) {
     handPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff, transparent: true } );
     handsprite = new THREE.Sprite( handPhoto );
@@ -46,17 +44,17 @@ texloader.load('/images/hand.png',
     handsprite.position.set(0, 5, -10);
     handPhoto.transparency = true;
   }
-); 
+); */  //this doesn't work how i need it to 
 
-handPhoto.opacity = .25; // Note: Trying to change opacity outside of specifically the loader breaks the website
+//handPhoto.opacity = .25; // Note: Trying to change opacity outside of specifically the loader breaks the website
 //If I instead try to change the loader, as follows:
 
-/* const map = new THREE.TextureLoader().load( '/images/hand.png' );
-const testmaterial = new THREE.SpriteMaterial( { map: map, transparent: true } );
+const handmap = new THREE.TextureLoader().load( '/images/hand.png' );
+const handPhoto = new THREE.SpriteMaterial( { map: testmap, transparent: true } );
 
 handsprite = new THREE.Sprite( testmaterial );
 scene.add (handsprite);
-testmaterial.opacity = .2; */
+testmaterial.opacity = .2; 
 
 scene.add(ambLight);
 scene.add(light);
