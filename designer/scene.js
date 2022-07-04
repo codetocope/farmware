@@ -56,9 +56,11 @@ const handmaterial = new THREE.SpriteMaterial( { map: handmap, transparent: true
 
 handsprite = new THREE.Sprite( handmaterial );
 scene.add (handsprite);
+
 handsprite.scale.set(10, 10, 1);
 handsprite.position.set(0, 5, -10);
-handmaterial.opacity = 0.0;
+handmaterial.opacity = 0.1;
+
 scene.add(ambLight);
 scene.add(light);
 
