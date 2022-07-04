@@ -37,9 +37,9 @@ var handPhoto,
     bodyPhoto,
     bodysprite;
 
-/*texloader.load('/images/hand.png', 
+texloader.load('/images/hand.png', 
   function(tex) {
-    handPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff } );
+    handPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff, transparent: true } );
     handsprite = new THREE.Sprite( handPhoto );
     handsprite.scale.set(10, 10, 1);
     scene.add(handsprite);
@@ -47,17 +47,17 @@ var handPhoto,
     handPhoto.transparency = true;
     handPhoto.opacity = .25;
   }
-); */
+); 
 
-//handPhoto.opacity = .25; // Note: Trying to change opacity outside of specifically the loader breaks the website
+handPhoto.opacity = .25; // Note: Trying to change opacity outside of specifically the loader breaks the website
 //If I instead try to change the loader, as follows:
 
-const map = new THREE.TextureLoader().load( '/images/hand.png' );
+/* const map = new THREE.TextureLoader().load( '/images/hand.png' );
 const testmaterial = new THREE.SpriteMaterial( { map: map, transparent: true } );
 
 handsprite = new THREE.Sprite( testmaterial );
 scene.add (handsprite);
-testmaterial.opacity = .2;
+testmaterial.opacity = .2; */
 
 scene.add(ambLight);
 scene.add(light);
