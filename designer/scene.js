@@ -57,6 +57,7 @@ const testmaterial = new THREE.SpriteMaterial( { map: map, transparent: true } )
 
 handsprite = new THREE.Sprite( testmaterial );
 scene.add (handsprite);
+testmaterial.opacity = .2;
 
 scene.add(ambLight);
 scene.add(light);
