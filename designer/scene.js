@@ -44,7 +44,7 @@ texloader.load('/images/hand.png',
     handsprite.scale.set(10, 10, 1);
     scene.add(handsprite);
     handsprite.position.set(0, 5, -10);
-    handsprite.opacity = 0.1;
+    handPhoto.transparency = true;
   }
 );
 
