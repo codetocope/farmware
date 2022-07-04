@@ -261,7 +261,7 @@ function onDocumentKeyDown(event) {
     
     if (keyCode == 80){
         setPreview(0, true);
-        // handphoto.opacity = 1.0 to show, then set opacity to 0.0 to hide
+        handphoto.opacity = 0.5;
     }
     if (keyCode == 83){
         setPreview(0, false);
