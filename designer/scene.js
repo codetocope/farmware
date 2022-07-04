@@ -49,8 +49,8 @@ var armPhoto,
 //handPhoto.opacity = .25; // Note: Trying to change opacity outside of specifically the loader breaks the website
 //If I instead try to change the loader, as follows:
 
-const handmap = new THREE.TextureLoader().load( '/images/hand.png' );
-const handPhoto = new THREE.SpriteMaterial( { map: handmap, transparent: true } );
+var handmap = new THREE.TextureLoader().load( '/images/hand.png' );
+var handPhoto = new THREE.SpriteMaterial( { map: handmap, transparent: true } );
 
 var handsprite = new THREE.Sprite( testmaterial );
 scene.add (handsprite);
