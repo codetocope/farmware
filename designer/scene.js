@@ -58,7 +58,7 @@ handsprite = new THREE.Sprite( handmaterial );
 scene.add (handsprite);
 handsprite.scale.set(10, 10, 1);
 handsprite.position.set(0, 5, -10);
-
+handmaterial.opacity = 0.0;
 scene.add(ambLight);
 scene.add(light);
 
