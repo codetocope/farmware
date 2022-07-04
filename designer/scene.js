@@ -58,7 +58,6 @@ handsprite = new THREE.Sprite( handmaterial );
 scene.add (handsprite);
 handsprite.scale.set(10, 10, 1);
 handsprite.position.set(0, 5, -10);
-handmaterial.opacity = .2;
 
 scene.add(ambLight);
 scene.add(light);
@@ -276,11 +275,11 @@ function onDocumentKeyDown(event) {
     
     if (keyCode == 80){
         setPreview(0, true);
-        //(currentType + "Photo").opacity = 1.0;
+        (currentType + "material").opacity = 1.0;
     }
     if (keyCode == 83){
         setPreview(0, false);
-        //(currentType + "Photo").opacity = 0.0;
+        (currentType + "material").opacity = 0.0;
         // Why did this brick the website?
     }
 }
