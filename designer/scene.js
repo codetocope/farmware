@@ -55,7 +55,7 @@ wristLoader.load('/images/arm.png',
     armsprite.scale.set(10, 10, 1);
     scene.add(armsprite);
     armsprite.position.set(0, 5, -10);
-    //armPhoto.opacity = 1.0;
+    armPhoto.opacity = 0;
   }
 ); 
 
@@ -66,7 +66,7 @@ bodyLoader.load('/images/body.png',
     bodysprite.scale.set(10, 10, 1);
     scene.add(bodysprite);
     bodysprite.position.set(0, 5, -10);
-    bodyPhoto.opacity = 1.0;
+    bodyPhoto.opacity = 0;
   }
 ); 
 
