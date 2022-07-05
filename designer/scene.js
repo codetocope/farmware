@@ -41,10 +41,9 @@ texloader.load('/images/hand.png',
   function(tex) {
     handPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff/*, rotation: Math.PI / 4 */ } );
     handsprite = new THREE.Sprite( handPhoto );
-    handsprite.scale.set(28, 26.4, 2.75);
+    handsprite.scale.set(28, 25, 2.75);
     scene.add(handsprite);
-    handsprite.position.set(-3.4, -2.5, 0);
-    handsprite.position.set(-2.4, -3, .75);
+    handsprite.position.set(-1.2, -3, .75);
     handPhoto.opacity = 0;
     currentType = handPhoto;
   }
@@ -54,7 +53,7 @@ wristLoader.load('/images/arm.png',
   function(wri) {
     armPhoto = new THREE.SpriteMaterial( { map: wri, color: 0xffffff /*, rotation: Math.PI / 11*/ } );
     armsprite = new THREE.Sprite( armPhoto );
-    armsprite.scale.set(35, 30, 1);
+    armsprite.scale.set(30, 25, 1);
     scene.add(armsprite);
     armsprite.position.set(-1, -0.5, -4);
     armPhoto.opacity = 0;
