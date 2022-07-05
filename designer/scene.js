@@ -47,7 +47,7 @@ texloader.load('/images/hand.png',
   }
 ); 
 
-wristLoader.load('/images/body.png', 
+wristLoader.load('/images/arm.png', 
   function(wri) {
     armPhoto = new THREE.SpriteMaterial( { map: wri, color: 0xffffff } );
     armsprite = new THREE.Sprite( armPhoto );
