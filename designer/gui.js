@@ -33,6 +33,12 @@ var exportBtn = {
     }
 };
 
+var previewBtn = {
+    preview: function () {
+        togglePreview();
+    }
+};
+
 const gui = new dat.GUI({
     width: 370,
     height: 850
@@ -55,6 +61,7 @@ baseOpt.add(objOptions, "type", ['Shapes Bracelet', 'Wave Bracelet', 'Ring', 'Ne
     setUI(newValue);
 }).name('Base Type');
 
+baseOpt.add(previewBtn, 'preview').name('Toggle Preview');
 baseOpt.add(exportBtn, 'export').name('Export to STL');
 baseOpt.open();
 
