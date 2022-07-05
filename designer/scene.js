@@ -52,7 +52,7 @@ texloader.load('/images/hand.png',
 
 wristLoader.load('/images/arm.png', 
   function(wri) {
-    armPhoto = new THREE.SpriteMaterial( { map: wri, color: 0xffffff, rotation: Math.PI / 6 } );
+    armPhoto = new THREE.SpriteMaterial( { map: wri, color: 0xffffff, rotation: Math.PI / 5 } );
     armsprite = new THREE.Sprite( armPhoto );
     armsprite.scale.set(25, 20, 1);
     scene.add(armsprite);
