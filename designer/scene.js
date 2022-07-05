@@ -350,5 +350,3 @@ function animate() {
     renderer.render(scene, camera);
 }
 animate();
-
-setUI("Ring");
