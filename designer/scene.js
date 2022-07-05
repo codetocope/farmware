@@ -286,11 +286,10 @@ function setPreview (type, show = false) {
     // get preview images
     // switch camera perspective (straight on?)
     
-    var currCameraRot = new THREE.Vector3();
-    camera.getWorldDirection(currCameraRot);
+    /*var currCameraRot = new THREE.Vector3();
+    camera.getWorldDirection(currCameraRot); */
     
     if (show) {
-        camera.rotation.x = 0;
     } else {
         camera.rotation = currCameraRot;
     }
