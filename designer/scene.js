@@ -286,6 +286,10 @@ function setPreview (type, show = false) {
     
     if (show) {
         camera.rotation.x = 0;
+        if (currentType == armPhoto)
+        {
+            camera.rotation.y = 90;
+        }
     } else {
         camera.rotation = currCameraRot;
     }
