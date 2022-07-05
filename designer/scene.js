@@ -62,7 +62,7 @@ wristLoader.load('/images/arm.png',
 bodyLoader.load('/images/body.png', 
   function(bod) {
     bodyPhoto = new THREE.SpriteMaterial( { map: bod, color: 0xffffff } );
-    handsprite = new THREE.Sprite( bodyPhoto );
+    bodysprite = new THREE.Sprite( bodyPhoto );
     bodysprite.scale.set(10, 10, 1);
     scene.add(bodysprite);
     bodysprite.position.set(0, 5, -10);
