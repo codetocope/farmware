@@ -331,7 +331,7 @@ function resetCamera()
     camera.rotation.z = 0;
     camera.position.x = 0;
     camera.position.y = 0;
-    camera.position.z = 0;
+    camera.position.z = 10;
 }
 
 function togglePreview()
