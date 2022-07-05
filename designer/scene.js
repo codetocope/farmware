@@ -132,6 +132,10 @@ fillLight.position.set(100, 0, 100);
 backLight = new THREE.DirectionalLight(0xffffff, 1.0);
 backLight.position.set(100, 0, -100).normalize();
 
+frontLight = new THREE.DirectionalLight(0xffffff, 1.0);
+frontLight.position.set(0, 0, 100).normalize();
+
+
 scene.add(backLight);
 
 /*const gridHelper = new THREE.GridHelper(36, 1);
