@@ -14,7 +14,7 @@ const groundColor = 0xB97A20; // brownish orange
 
 const materialBlack = new THREE.Color(0x303030);
 const materialWhite = new THREE.Color(0xdbdbdb);
-const materialOrange = new THREE.Color(0xffa500);
+const materialOrange = new THREE.Color(0xff8200);
 
 
 var loadedInsets = [];
