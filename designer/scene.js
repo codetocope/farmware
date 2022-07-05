@@ -339,6 +339,11 @@ function togglePreview()
     }
 }
 
+function resetPreview()
+{
+    isPreview = false;
+}
+
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
