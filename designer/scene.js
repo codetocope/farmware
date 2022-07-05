@@ -65,7 +65,7 @@ bodyLoader.load('/images/body.png',
   function(bod) {
     bodyPhoto = new THREE.SpriteMaterial( { map: bod, color: 0xffffff } );
     bodysprite = new THREE.Sprite( bodyPhoto );
-    bodysprite.scale.set(10, 10, 1);
+    bodysprite.scale.set(100, 100, 1);
     scene.add(bodysprite);
     bodysprite.position.set(0, 5, -10);
     bodyPhoto.opacity = 0;
