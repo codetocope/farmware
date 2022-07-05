@@ -93,10 +93,6 @@ handmaterial.opacity = 0.1;
 handmaterial.opacity = 1;
 */
 
-function togglePreview()
-{
-    ispreview = !(isPreview);
-}
 
 scene.add(ambLight);
 scene.add(light);
@@ -323,8 +319,26 @@ function onDocumentKeyDown(event) {
         // handPhoto.opacity = 0.0;
         currentType.opacity = 0.0;
         // Why did this brick the website?
+    } 
+    
+}
+
+
+function togglePreview()
+{
+    isPreview = !(isPreview);
+    if (isPreview)
+    {
+        currentType.opacity = 1.0;
+        setPreview(0, true);
+    }
+    else
+    {
+        setPreview(0, false);
+        currentType.opacity = 0.0;
     }
 }
+
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
