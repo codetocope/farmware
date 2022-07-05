@@ -1,55 +1,45 @@
 /* NOTE ON OBJ: Make sure no n-sided polygons! OBJ can recognize these as faces, but the THREE.js importer has trouble with these. */
+/* NOTE ON OBJ: Make sure no n-sided polygons! OBJ can recognize these as faces, but the THREE.js importer has trouble with these. */
 const OBJLoader = new THREE.OBJLoader();
-
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
-
 var ringSelectedInset = null;
-
 const ambLight = new THREE.AmbientLight(0xffffff, .35);
 const skyColor = 0xB1E1FF; // light blue  // TODO: Change color
 const groundColor = 0xB97A20; // brownish orange
-
 const materialBlack = new THREE.Color(0x303030);
 const materialWhite = new THREE.Color(0xdbdbdb);
 const materialOrange = new THREE.Color(0xff8200);
-
-
 var loadedInsets = [];
 var currInsetIndex = 0;
-
 const light = new THREE.PointLight(0xffffff, 0.9, 18);
 light.position.set(0, 6, 0);
 light.castShadow = true;
-
 var isPreview = false; 
 var texloader = new THREE.TextureLoader();
 var wristLoader = new THREE.TextureLoader(); 
 var bodyLoader = new THREE.TextureLoader(); //not sure this is necessary but just in case;
-
 var currentType;
-
 var handPhoto,
     handsprite,
     armPhoto,
     armsprite,
     bodyPhoto,
     bodysprite;
-
 texloader.load('/images/hand.png', 
   function(tex) {
     handPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff, rotation: Math.PI / 4 } );
     handsprite = new THREE.Sprite( handPhoto );
     handsprite.scale.set(33, 26.4, 2.75);
     scene.add(handsprite);
+    handsprite.position.set(-2.4, -2.5, 0);
     handsprite.position.set(-2.4, -3, .75);
     handPhoto.opacity = 0;
     currentType = handPhoto;
   }
 ); 
-
 wristLoader.load('/images/arm.png', 
   function(wri) {
     armPhoto = new THREE.SpriteMaterial( { map: wri, color: 0xffffff, rotation: Math.PI / 4 } );
@@ -60,7 +50,6 @@ wristLoader.load('/images/arm.png',
     armPhoto.opacity = 0;
   }
 ); 
-
 bodyLoader.load('/images/body.png', 
   function(bod) {
     bodyPhoto = new THREE.SpriteMaterial( { map: bod, color: 0xffffff } );
@@ -71,72 +60,54 @@ bodyLoader.load('/images/body.png',
     bodyPhoto.opacity = 0;
   }
 ); 
-
-
 // handPhoto.opacity = .25; // Note: Trying to change opacity outside of specifically the loader breaks the website
 // SOLUTION: at this point, handPhoto is undefined simply because it hasn't loaded yet. Changing opacity within load works
 // because the callback function is guaranteed to have completed its logic upon the file load completion, meaning that handPhoto will
 // have an object assigned to it by the time it's called.
-
 // If I instead try to change the loader, as follows:
-
 /*
 const handmap = new THREE.TextureLoader().load( '/images/hand.png' );
 const handmaterial = new THREE.SpriteMaterial( { map: handmap, transparent: true } );
-
 handsprite = new THREE.Sprite( handmaterial );
 scene.add (handsprite);
-
 handsprite.scale.set(10, 10, 1);
 handsprite.position.set(0, 5, -10);
 handmaterial.opacity = 0.1;
 handmaterial.opacity = 1;
 */
-
-
 scene.add(ambLight);
 scene.add(light);
-
 document.addEventListener("keydown", onDocumentKeyDown, false);
-
 // Loads ring by default, does so here 
 loadOBJ('ringBase');
-
 const plane = new THREE.Mesh(
     new THREE.PlaneGeometry(50, 50, 10, 10),
     new THREE.MeshPhongMaterial({
         color: 0xffffff
     })
 );
-
 plane.rotation.x = Math.PI * -.5;
 plane.position.y = -1;
-
 const defaultMaterial = new THREE.MeshLambertMaterial({
     color: 0xffffff,
     wireframe: false,
 });
-
 camera.position.z = 7;
 camera.position.y = 3;
-
 var group = new THREE.Object3D();
 scene.add(group);
-
 keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 1.0);
 keyLight.position.set(-100, 0, 100);
-
 fillLight = new THREE.DirectionalLight(new THREE.Color('hsl(240, 100%, 75%)'), 0.75);
 fillLight.position.set(100, 0, 100);
-
 backLight = new THREE.DirectionalLight(0xffffff, 1.0);
 backLight.position.set(100, 0, -100).normalize();
-
 frontLight = new THREE.DirectionalLight(0xffffff, 1.0);
 frontLight.position.set(0, 0, 100).normalize();
 
 
 scene.add(backLight);
+
 scene.add(frontLight);
 /*const gridHelper = new THREE.GridHelper(36, 1);
 scene.add(gridHelper);*/
@@ -144,8 +115,6 @@ scene.add(gridHelper);*/
 renderer.setSize(window.innerWidth - 15, window.innerHeight - 15);
 renderer.setClearColor(0x242d45, 1);
 document.body.appendChild(renderer.domElement);
-
-
 function loadOBJ(objName) {
     
     var manager = new THREE.LoadingManager();
@@ -198,7 +167,6 @@ function loadOBJ(objName) {
         });
     });
 }
-
 function saveFile(fileName) {
     
     const exportSTL = new THREE.STLExporter();
@@ -222,7 +190,6 @@ function saveFile(fileName) {
     else
         saveAs(blob, 'default.stl');
 }
-
 function changeCurrentType(type)
 {
     if (currentType != type)
@@ -231,7 +198,6 @@ function changeCurrentType(type)
         currentType = type;
     }
 }
-
 function updateModel(baseName) {
     
     while (group.children.length) {
@@ -242,7 +208,6 @@ function updateModel(baseName) {
     scene.add(group);
     
 }
-
 function updateModelOptions(opts, multiFlag = false, clearAll = false) {
     
     // TODO: find better solution for clearing old options than clearing and loading everytime
@@ -268,7 +233,6 @@ function updateModelOptions(opts, multiFlag = false, clearAll = false) {
         }
     }
 }
-
 function setColor(color){
     
     for (var c in group.children) {
@@ -287,9 +251,10 @@ function setPreview (type, show = false) {
     // switch camera perspective (straight on?)
     
     var currCameraRot = new THREE.Vector3();
-    camera.getWorldDirection(currCameraRot); 
+    camera.getWorldDirection(currCameraRot);
     
     if (show) {
+        camera.rotation.x = 0;
     } else {
         camera.rotation = currCameraRot;
     }
@@ -300,7 +265,6 @@ function setInsetScale(meshIndex, newValue, axis = 0) {
     else
         loadedInsets[meshIndex].scale[axis] = newValue;
 }
-
 function windowResized() {
     const width = window.innerWidth;
     const height = window.innerHeight;
@@ -309,7 +273,6 @@ function windowResized() {
     renderer.setSize(width, height);
     setCanvasDimensions(renderer.domElement, width, height);
 }
-
 function onDocumentKeyDown(event) {
     var keyCode = event.key;
     
@@ -326,7 +289,6 @@ function onDocumentKeyDown(event) {
     } 
     
 }
-
 function resetCamera()
 {
     camera.rotation.x = 0;
@@ -336,27 +298,24 @@ function resetCamera()
     camera.position.y = 0;
     camera.position.z = 10;
 }
-
 function togglePreview()
 {
     isPreview = !(isPreview);
     if (isPreview)
     {
         currentType.opacity = 1.0;
-        //setPreview(0, true);
+        setPreview(0, true);
     }
     else
     {
-        //setPreview(0, false);
+        setPreview(0, false);
         currentType.opacity = 0.0;
     }
 }
-
 function resetPreview()
 {
     isPreview = false;
 }
-
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
