@@ -141,6 +141,8 @@ renderer.setSize(window.innerWidth - 15, window.innerHeight - 15);
 renderer.setClearColor(0x242d45, 1);
 document.body.appendChild(renderer.domElement);
 
+setUI("Ring");
+
 function loadOBJ(objName) {
     
     var manager = new THREE.LoadingManager();
