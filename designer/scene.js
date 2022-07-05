@@ -42,7 +42,7 @@ texloader.load('/images/hand.png',
   function(tex) {
     handPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff, rotation: Math.PI / 4 } );
     handsprite = new THREE.Sprite( handPhoto );
-    handsprite.scale.set(25, 20, 1);
+    handsprite.scale.set(25, 20, 2.5);
     scene.add(handsprite);
     handsprite.position.set(-2, -2.5, 0);
     handPhoto.opacity = 0;
