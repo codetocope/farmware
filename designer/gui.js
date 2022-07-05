@@ -67,7 +67,7 @@ baseOpt.add(objOptions, "type", ['Shapes Bracelet', 'Wave Bracelet', 'Ring', 'Ne
     setUI(newValue);
 }).name('Base Type');
 
-baseOpt.add(resetBtn, 'resetter').name("Reset Camera");
+//baseOpt.add(resetBtn, 'resetter').name("Reset Camera");
 baseOpt.add(previewBtn, 'preview').name('Toggle Preview');
 baseOpt.add(exportBtn, 'export').name('Export to STL');
 baseOpt.open();
