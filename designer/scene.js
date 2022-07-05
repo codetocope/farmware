@@ -53,7 +53,7 @@ wristLoader.load('/images/arm.png',
   function(wri) {
     armPhoto = new THREE.SpriteMaterial( { map: wri, color: 0xffffff /*, rotation: Math.PI / 11*/ } );
     armsprite = new THREE.Sprite( armPhoto );
-    armsprite.scale.set(20, 30, 1);
+    armsprite.scale.set(20, 33, 1);
     scene.add(armsprite);
     armsprite.position.set(-1, -.1, -4);
     armPhoto.opacity = 0;
