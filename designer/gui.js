@@ -39,6 +39,12 @@ var previewBtn = {
     }
 };
 
+var resetBtn = {
+    resetter: function () {
+        resetCamera();
+    }
+};
+
 const gui = new dat.GUI({
     width: 370,
     height: 850
@@ -61,6 +67,7 @@ baseOpt.add(objOptions, "type", ['Shapes Bracelet', 'Wave Bracelet', 'Ring', 'Ne
     setUI(newValue);
 }).name('Base Type');
 
+baseOpt.add(resetBtn, 'resetter').name("Reset Camera");
 baseOpt.add(previewBtn, 'preview').name('Toggle Preview');
 baseOpt.add(exportBtn, 'export').name('Export to STL');
 baseOpt.open();
