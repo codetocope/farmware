@@ -84,6 +84,7 @@ function setUI(type) {
     clearUI();
 
     if (type == "Ring") {
+        changeCurrentType("handPhoto");
         const ringOpt = gui.addFolder("Ring Options");
         
         ringOpt.add(objOptions, "inset1", ['heart', 'circle', 'triangle', 'square']).onChange(function (newValue) {
@@ -101,6 +102,7 @@ function setUI(type) {
         ringOpt.open();
 
     } else if (type == "Wave Bracelet") {
+        changeCurrentType("armPhoto");
         const waveBraceletOptions = gui.addFolder("Wave Bracelet Options");
         updateModelOptions("wave", false);
 
@@ -112,6 +114,7 @@ function setUI(type) {
             setInsetScale(0, newValue, 'z');
         });
     } else if (type == "Shapes Bracelet") {
+        changeCurrentType("armPhoto");
         const shapesBraceletOpt = gui.addFolder("Shapes Bracelet Options");
 
         shapesBraceletOpt.add(objOptions, "color", ['white', 'black', 'orange']).onChange(function (newValue) {
@@ -164,6 +167,7 @@ function setUI(type) {
 
         shapesBraceletOpt.open();
     } else if (type == "Necklace"){
+        changeCurrentType("bodyPhoto");
         const necklaceOpts = gui.addFolder("Necklace");
 
         necklaceOpts.add(neckOpts, "shape", ['pyramids', 'spheres', 'wavy', 'boxy']).onChange(function (newValue){
