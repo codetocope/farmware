@@ -204,5 +204,3 @@ function setUI(type) {
 
     } 
 }
-
-setUI(Ring);
