@@ -16,6 +16,7 @@ const materialBlack = new THREE.Color(0x303030);
 const materialWhite = new THREE.Color(0xdbdbdb);
 const materialOrange = new THREE.Color(0xfc7b03);
 
+
 var loadedInsets = [];
 var currInsetIndex = 0;
 
@@ -23,6 +24,7 @@ const light = new THREE.PointLight(0xffffff, 0.9, 18);
 light.position.set(0, 6, 0);
 light.castShadow = true;
 
+var isPreview = false; 
 var texloader = new THREE.TextureLoader();
 var wristLoader = new THREE.TextureLoader(); 
 var bodyLoader = new THREE.TextureLoader(); //not sure this is necessary but just in case;
@@ -90,6 +92,11 @@ handsprite.position.set(0, 5, -10);
 handmaterial.opacity = 0.1;
 handmaterial.opacity = 1;
 */
+
+function togglePreview()
+{
+    ispreview = !(isPreview);
+}
 
 scene.add(ambLight);
 scene.add(light);
