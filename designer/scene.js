@@ -43,10 +43,33 @@ texloader.load('/images/hand.png',
     handsprite.scale.set(10, 10, 1);
     scene.add(handsprite);
     handsprite.position.set(0, 5, -10);
-
     currentType = handPhoto;
   }
 ); 
+
+wristLoader.load('/images/body.png', 
+  function(wri) {
+    armPhoto = new THREE.SpriteMaterial( { map: wri, color: 0xffffff } );
+    armsprite = new THREE.Sprite( armPhoto );
+    armsprite.scale.set(10, 10, 1);
+    scene.add(armsprite);
+    armsprite.position.set(0, 5, -10);
+    //armPhoto.opacity = 1.0;
+  }
+); 
+
+bodyLoader.load('/images/body.png', 
+  function(bod) {
+    bodyPhoto = new THREE.SpriteMaterial( { map: bod, color: 0xffffff } );
+    handsprite = new THREE.Sprite( bodyPhoto );
+    bodysprite.scale.set(10, 10, 1);
+    scene.add(bodysprite);
+    bodysprite.position.set(0, 5, -10);
+    bodyPhoto.opacity = 0.0;
+  }
+); 
+
+handPhoto.opacity = 0.0;
 
 // handPhoto.opacity = .25; // Note: Trying to change opacity outside of specifically the loader breaks the website
 // SOLUTION: at this point, handPhoto is undefined simply because it hasn't loaded yet. Changing opacity within load works
