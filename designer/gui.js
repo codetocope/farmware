@@ -89,6 +89,7 @@ function clearControls(ui) {
 function setUI(type) {
 
     clearUI();
+    resetPreview();
 
     if (type == "Ring") {
         changeCurrentType(handPhoto);
