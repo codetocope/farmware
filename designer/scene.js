@@ -44,7 +44,7 @@ texloader.load('/images/hand.png',
     handsprite = new THREE.Sprite( handPhoto );
     handsprite.scale.set(25, 20, 1);
     scene.add(handsprite);
-    handsprite.position.set(0, 0, 0);
+    handsprite.position.set(-2, -2.5, 0);
     handPhoto.opacity = 0;
     currentType = handPhoto;
   }
