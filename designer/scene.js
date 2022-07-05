@@ -43,6 +43,7 @@ texloader.load('/images/hand.png',
     handsprite.scale.set(10, 10, 1);
     scene.add(handsprite);
     handsprite.position.set(0, 5, -10);
+    handPhoto.opacity = 0;
     currentType = handPhoto;
   }
 ); 
@@ -65,11 +66,10 @@ bodyLoader.load('/images/body.png',
     bodysprite.scale.set(10, 10, 1);
     scene.add(bodysprite);
     bodysprite.position.set(0, 5, -10);
-    //bodyPhoto.opacity = 0.0;
+    bodyPhoto.opacity = 1.0;
   }
 ); 
 
-//handPhoto.opacity = 0.0;
 
 // handPhoto.opacity = .25; // Note: Trying to change opacity outside of specifically the loader breaks the website
 // SOLUTION: at this point, handPhoto is undefined simply because it hasn't loaded yet. Changing opacity within load works
