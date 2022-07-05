@@ -40,7 +40,7 @@ var handPhoto,
 
 texloader.load('/images/hand.png', 
   function(tex) {
-    handPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff, rotation = Math.PI / 4 } );
+    handPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff, rotation: Math.PI / 4 } );
     handsprite = new THREE.Sprite( handPhoto );
     handsprite.scale.set(20, 20, 1);
     scene.add(handsprite);
