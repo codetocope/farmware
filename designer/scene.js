@@ -134,8 +134,8 @@ backLight.position.set(100, 0, -100).normalize();
 
 scene.add(backLight);
 
-const gridHelper = new THREE.GridHelper(36, 1);
-scene.add(gridHelper);
+/*const gridHelper = new THREE.GridHelper(36, 1);
+scene.add(gridHelper);*/
 
 renderer.setSize(window.innerWidth - 15, window.innerHeight - 15);
 renderer.setClearColor(0x242d45, 1);
