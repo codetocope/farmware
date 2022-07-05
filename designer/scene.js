@@ -67,7 +67,7 @@ bodyLoader.load('/images/body.png',
     bodysprite = new THREE.Sprite( bodyPhoto );
     bodysprite.scale.set(100, 100, 1);
     scene.add(bodysprite);
-    bodysprite.position.set(0, 5, -25);
+    bodysprite.position.set(0, 5, -10);
     bodyPhoto.opacity = 0;
   }
 ); 
