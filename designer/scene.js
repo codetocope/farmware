@@ -41,7 +41,7 @@ texloader.load('/images/hand.png',
   function(tex) {
     handPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff/*, rotation: Math.PI / 4 */ } );
     handsprite = new THREE.Sprite( handPhoto );
-    handsprite.scale.set(30.8, 25, 2.75);
+    handsprite.scale.set(28, 27.5, 2.75);
     scene.add(handsprite);
     handsprite.position.set(-1.7, -3, .75);
     handPhoto.opacity = 0;
