@@ -56,7 +56,7 @@ wristLoader.load('/images/arm.png',
     armsprite = new THREE.Sprite( armPhoto );
     armsprite.scale.set(10, 10, 1);
     scene.add(armsprite);
-    armsprite.position.set(0, -5, 0);
+    armsprite.position.set(0, -1, 0);
     armPhoto.opacity = 0;
   }
 ); 
