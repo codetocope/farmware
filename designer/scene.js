@@ -214,6 +214,16 @@ function saveFile(fileName) {
     else
         saveAs(blob, 'default.stl');
 }
+
+function changeCurrentType(type)
+{
+    if (currentType != type)
+    {
+        currentType.opacity = 0.0;
+        currentType = type;
+    }
+}
+
 function updateModel(baseName) {
     
     while (group.children.length) {
