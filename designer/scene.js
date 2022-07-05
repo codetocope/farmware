@@ -324,6 +324,15 @@ function onDocumentKeyDown(event) {
     
 }
 
+function resetCamera()
+{
+    camera.rotation.x = 0;
+    camera.rotation.y = 0;
+    camera.rotation.z = 0;
+    camera.position.x = 0;
+    camera.position.y = 0;
+    camera.position.z = 0;
+}
 
 function togglePreview()
 {
