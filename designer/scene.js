@@ -42,7 +42,7 @@ texloader.load('/images/hand.png',
   function(tex) {
     handPhoto = new THREE.SpriteMaterial( { map: tex, color: 0xffffff, rotation: Math.PI / 4 } );
     handsprite = new THREE.Sprite( handPhoto );
-    handsprite.scale.set(27.5, 22, 2.75);
+    handsprite.scale.set(33, 26.4, 2.75);
     scene.add(handsprite);
     handsprite.position.set(-2.4, -2.5, 0);
     handPhoto.opacity = 0;
@@ -65,7 +65,7 @@ bodyLoader.load('/images/body.png',
   function(bod) {
     bodyPhoto = new THREE.SpriteMaterial( { map: bod, color: 0xffffff } );
     bodysprite = new THREE.Sprite( bodyPhoto );
-    bodysprite.scale.set(150, 150, 1);
+    bodysprite.scale.set(165, 165, 1);
     scene.add(bodysprite);
     bodysprite.position.set(0, 5, -10);
     bodyPhoto.opacity = 0;
