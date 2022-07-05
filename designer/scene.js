@@ -286,8 +286,8 @@ function setPreview (type, show = false) {
     // get preview images
     // switch camera perspective (straight on?)
     
-    /*var currCameraRot = new THREE.Vector3();
-    camera.getWorldDirection(currCameraRot); */
+    var currCameraRot = new THREE.Vector3();
+    camera.getWorldDirection(currCameraRot); 
     
     if (show) {
     } else {
@@ -343,11 +343,11 @@ function togglePreview()
     if (isPreview)
     {
         currentType.opacity = 1.0;
-        setPreview(0, true);
+        //setPreview(0, true);
     }
     else
     {
-        setPreview(0, false);
+        //setPreview(0, false);
         currentType.opacity = 0.0;
     }
 }
