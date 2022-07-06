@@ -119,7 +119,7 @@ frontLight = new THREE.DirectionalLight(0xffffff, 1.0);
 frontLight.position.set(0, 0, 100).normalize();
 
 westLight = new THREE.DirectionalLight(0xffffff, 1.0);
-westLight.position.set(-100, 0, 0).normalize();
+westLight.position.set(100, 0, 0).normalize();
 
 scene.add(backLight);
 
