@@ -2,6 +2,7 @@ var customOptions = {
     type: 'custom',
     waveHeight: 1
 };
+
 var neckOpts = {
     shape: 'spheres',
     scaleX: 1,
@@ -21,7 +22,7 @@ var objOptions = {
     insets: [],
     insetSizes: [30, 30, 30],
     color: 'white'
-};
+}; // option presets 
 
 function updateAllInsets() {
     objOptions.insets = [objOptions.inset1, objOptions.inset2, objOptions.inset3];
@@ -37,23 +38,17 @@ var previewBtn = {
     preview: function () {
         togglePreview();
     }
-};
-
-var resetBtn = {
-    resetter: function () {
-        resetCamera();
-    }
-};
+}; // gui buttons on the website 
 
 const gui = new dat.GUI({
     width: 370,
     height: 850
-});
+}); // datGUI is the GUI being used, as selected by JaNiece when she built this thing 
 
 gui.domElement.id = 'gui';
 
 const baseOpt = gui.addFolder("Base Options");
-baseOpt.add(objOptions, "fileName").name('File Name');
+baseOpt.add(objOptions, "fileName").name('File Name'); 
 
 baseOpt.add(objOptions, "type", ['Shapes Bracelet', 'Wave Bracelet', 'Ring', 'Necklace']).onChange(function (newValue) {
     if (newValue.indexOf("Bracelet") > -1) {
@@ -67,10 +62,9 @@ baseOpt.add(objOptions, "type", ['Shapes Bracelet', 'Wave Bracelet', 'Ring', 'Ne
     setUI(newValue);
 }).name('Base Type');
 
-//baseOpt.add(resetBtn, 'resetter').name("Reset Camera");
 baseOpt.add(previewBtn, 'preview').name('Toggle Preview');
 baseOpt.add(exportBtn, 'export').name('Export to STL');
-baseOpt.open();
+baseOpt.open(); // This is in the "Base Options" box on the website 
 
 //const customOpts = gui.addFolder("Custom Options");
 
@@ -96,10 +90,10 @@ function clearControls(ui) {
 function setUI(type) {
 
     clearUI();
-    resetPreview();
+    resetPreview(); // basic cleanup stuff 
 
     if (type == "Ring") {
-        changeCurrentType(handPhoto);
+        changeCurrentType(handPhoto); // These 'changetypes' are for the preview system
         const ringOpt = gui.addFolder("Ring Options");
         
         ringOpt.add(objOptions, "inset1", ['heart', 'circle', 'triangle', 'square']).onChange(function (newValue) {
@@ -112,10 +106,10 @@ function setUI(type) {
 
         ringOpt.add(objOptions, "scale1", 28, 40, 1).name('Inset Size').onChange(function (newValue) {
             objOptions.insetSizes[0] = newValue;
-            setInsetScale(0, newValue / 30);
+            setInsetScale(0, newValue / 30); // Sets the options you see when ring is selected
         });
-        ringOpt.open();
-
+        ringOpt.open(); // Then opens those options into the UI 
+        // The rest of the code in this file does that but for all FarmWear types 
     } else if (type == "Wave Bracelet") {
         changeCurrentType(armPhoto);
         const waveBraceletOptions = gui.addFolder("Wave Bracelet Options");
