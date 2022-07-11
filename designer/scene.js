@@ -184,6 +184,7 @@ function loadOBJ(objName) {
         });
     });
 }
+
 // Saves to an STL file
 function saveFile(fileName) {
     
@@ -272,20 +273,6 @@ function setColor(color){
     }
 }
 
-function setPreview (type, show = false) {
-    // get preview images
-    // switch camera perspective (straight on?)
-    
-    var currCameraRot = new THREE.Vector3();
-    camera.getWorldDirection(currCameraRot);
-    
-    if (show) {
-        //camera.rotation.x = 0;
-    } else {
-        camera.rotation = currCameraRot;
-    }
-}
-
 function setInsetScale(meshIndex, newValue, axis = 0) {
     if (axis == 0)
         loadedInsets[meshIndex].scale.x = loadedInsets[meshIndex].scale.y = loadedInsets[meshIndex].scale.z = newValue;
@@ -320,29 +307,19 @@ function onDocumentKeyDown(event) {
     
 }
 
-/*function resetCamera()
-{
-    camera.rotation.x = 0;
-    camera.rotation.y = 0;
-    camera.rotation.z = 0;
-    camera.position.x = 0;
-    camera.position.y = 0;
-    camera.position.z = 10;
-} */
 
 // Turns the preview system on
-// The preview system is scuffed, but I was given three days over 4th of July weekend so it's the best I could do
+// The preview system is scuffed, but I was given three days over 4th of July weekend, and I had to learn this all as I went
+// 'Twas the best I could do 
 function togglePreview()
 {
     isPreview = !(isPreview);
     if (isPreview)
     {
         currentType.opacity = 1.0;
-        setPreview(0, true);
     }
     else
     {
-        setPreview(0, false);
         currentType.opacity = 0.0;
     }
 }
