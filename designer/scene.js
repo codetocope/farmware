@@ -23,6 +23,7 @@ const light = new THREE.PointLight(0xffffff, 0.9, 18);
 light.position.set(0, 6, 0);
 light.castShadow = true;
 
+//This bit is all preview stuff
 var isPreview = false; 
 var texloader = new THREE.TextureLoader();
 var wristLoader = new THREE.TextureLoader(); 
@@ -47,7 +48,7 @@ texloader.load('/images/hand.png',
     handPhoto.opacity = 0;
     currentType = handPhoto;
   }
-); 
+); // Texture loaders
 
 wristLoader.load('/images/arm.png', 
   function(wri) {
@@ -71,10 +72,6 @@ bodyLoader.load('/images/body.png',
   }
                 
 ); 
-// handPhoto.opacity = .25; // Note: Trying to change opacity outside of specifically the loader breaks the website
-// SOLUTION: at this point, handPhoto is undefined simply because it hasn't loaded yet. Changing opacity within load works
-// because the callback function is guaranteed to have completed its logic upon the file load completion, meaning that handPhoto will
-// have an object assigned to it by the time it's called.
 
 
 scene.add(ambLight);
@@ -95,17 +92,20 @@ const plane = new THREE.Mesh(
 plane.rotation.x = Math.PI * -.5;
 plane.position.y = -1;
 
+// This is the base material (white), can be changed as necessary
 const defaultMaterial = new THREE.MeshLambertMaterial({
     color: 0xffffff,
     wireframe: false,
 });
 
+// Default camera position
 camera.position.z = 7;
 camera.position.y = 3;
 
 var group = new THREE.Object3D();
 scene.add(group);
 
+// Lights, more can be added in this general format 
 keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(30, 100%, 75%)'), 1.0);
 keyLight.position.set(-100, 0, 100);
 
@@ -121,6 +121,8 @@ frontLight.position.set(0, 0, 100).normalize();
 scene.add(backLight);
 
 scene.add(frontLight);
+
+// Uncomment this to re-add the grid if necessary
 /*const gridHelper = new THREE.GridHelper(36, 1);
 scene.add(gridHelper);*/
 
@@ -129,6 +131,7 @@ renderer.setClearColor(0x242d45, 1);
 
 document.body.appendChild(renderer.domElement);
 
+// Loads objects into the scene
 function loadOBJ(objName) {
     
     var manager = new THREE.LoadingManager();
@@ -161,8 +164,8 @@ function loadOBJ(objName) {
                     
                     loadedInsets[0] = mesh;
                     
-                } else if (objOptions.type.indexOf('Bracelet') > -1 && mesh.name != 'braceletBase') { // Why the != here?
-                    loadedInsets[currInsetIndex] = mesh; // Why is this different?
+                } else if (objOptions.type.indexOf('Bracelet') > -1 && mesh.name != 'braceletBase') { 
+                    loadedInsets[currInsetIndex] = mesh; 
                     
                     if (mesh.name == "waveInset") {
                         mesh.position.x = 0;
@@ -181,7 +184,7 @@ function loadOBJ(objName) {
         });
     });
 }
-
+// Saves to an STL file
 function saveFile(fileName) {
     
     const exportSTL = new THREE.STLExporter();
@@ -192,6 +195,7 @@ function saveFile(fileName) {
         group.children[c].updateMatrix();
         newGeo.merge(group.children[c].geometry, group.children[c].matrix);
     }
+    
     var exportItem = new THREE.Mesh(newGeo, defaultMaterial);
     
     var stlString = exportSTL.parse(exportItem);
@@ -206,6 +210,7 @@ function saveFile(fileName) {
         saveAs(blob, 'default.stl');
 }
 
+// This is used in the preview system 
 function changeCurrentType(type)
 {
     if (currentType != type)
@@ -215,6 +220,7 @@ function changeCurrentType(type)
     }
 }
 
+// Updates the model in the scene
 function updateModel(baseName) {
     
     while (group.children.length) {
@@ -274,7 +280,7 @@ function setPreview (type, show = false) {
     camera.getWorldDirection(currCameraRot);
     
     if (show) {
-        camera.rotation.x = 0;
+        //camera.rotation.x = 0;
     } else {
         camera.rotation = currCameraRot;
     }
@@ -296,6 +302,8 @@ function windowResized() {
     setCanvasDimensions(renderer.domElement, width, height);
 }
 
+// This function is more of a 'relic of the past' kind of thing, feel free to ignore it
+// still here for a 'just in case' kind of reason
 function onDocumentKeyDown(event) {
     var keyCode = event.key;
     
@@ -308,7 +316,6 @@ function onDocumentKeyDown(event) {
         setPreview(0, false);
         // handPhoto.opacity = 0.0;
         currentType.opacity = 0.0;
-        // Why did this brick the website?
     } 
     
 }
@@ -323,6 +330,8 @@ function onDocumentKeyDown(event) {
     camera.position.z = 10;
 } */
 
+// Turns the preview system on
+// The preview system is scuffed, but I was given three days over 4th of July weekend so it's the best I could do
 function togglePreview()
 {
     isPreview = !(isPreview);
@@ -338,6 +347,7 @@ function togglePreview()
     }
 }
 
+// Necessary so the preview system doesn't break when the farmwear type is changed while it's on
 function resetPreview()
 {
     isPreview = false;
