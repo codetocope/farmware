@@ -50,7 +50,7 @@ gui.domElement.id = 'gui';
 const baseOpt = gui.addFolder("Base Options");
 baseOpt.add(objOptions, "fileName").name('File Name'); 
 
-baseOpt.add(objOptions, "type", ['Bracelet', 'Ring', 'Necklace']).onChange(function (newValue) {
+baseOpt.add(objOptions, "type", ['Wave Bracelet', 'Ring', 'Necklace']).onChange(function (newValue) {
     if (newValue.indexOf("Bracelet") > -1) {
         updateModel('bracelet' + 'Base');
     } else if (newValue.indexOf('Neck') > -1){
