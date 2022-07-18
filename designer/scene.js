@@ -163,7 +163,7 @@ function loadOBJ(objName) {
                     mesh.position.y = 1.1;
                     mesh.position.z = 1.69;
                     
-                    loadedInsets[0] = mesh;
+                    //loadedInsets[0] = mesh;
                     
                 } else if (objOptions.type.indexOf('Bracelet') > -1 && mesh.name != 'braceletBase') { 
                     loadedInsets[currInsetIndex] = mesh; 
