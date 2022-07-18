@@ -178,6 +178,15 @@ function loadOBJ(objName) {
                     }
                 } else if (objOptions.type == 'Necklace') {
                     loadedInsets[0] = mesh;
+                    
+                    if (mesh.name == "wavyNeckInset")
+                    {
+                        mesh.rotation.x = Math.PI / 2;
+                    }
+                    else
+                    {
+                        mesh.rotation.x = Math.PI;
+                    }
                 }
                 group.add(mesh);
             }
