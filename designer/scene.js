@@ -181,11 +181,11 @@ function loadOBJ(objName) {
                     
                     if (mesh.name == "wavyNeckInset")
                     {
-                        mesh.rotation.x = Math.PI / 2;
+                        mesh.rotation.y = Math.PI / 2;
                     }
                     else
                     {
-                        mesh.rotation.x = Math.PI;
+                        mesh.rotation.y = Math.PI;
                     }
                 }
                 group.add(mesh);
