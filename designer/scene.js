@@ -156,6 +156,7 @@ function loadOBJ(objName) {
                 //mesh.material.color.set(materialOrange);
                 
                 if (objOptions.type == 'Ring' && mesh.name != 'ringBase') {
+                    mesh.name = 'circleInset';
                     mesh.rotation.x = Math.PI * -0.5;
                     mesh.rotation.z = Math.PI;
                     
