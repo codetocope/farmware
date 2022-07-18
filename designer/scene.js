@@ -156,14 +156,12 @@ function loadOBJ(objName) {
                 //mesh.material.color.set(materialOrange);
                 
                 if (objOptions.type == 'Ring' && mesh.name != 'ringBase') {
-                    mesh.name = 'circleInset';
+                    loadedInsets[0] = mesh;
                     mesh.rotation.x = Math.PI * -0.5;
                     mesh.rotation.z = Math.PI;
                     
                     mesh.position.y = 1.1;
                     mesh.position.z = 1.69;
-                    
-                    //loadedInsets[0] = mesh;
                     
                 } else if (objOptions.type.indexOf('Bracelet') > -1 && mesh.name != 'braceletBase') { 
                     loadedInsets[currInsetIndex] = mesh; 
@@ -171,7 +169,7 @@ function loadOBJ(objName) {
                     if (mesh.name == "waveInset") {
                         mesh.position.x = 0;
                         mesh.position.y = 1 - mesh.scale.z;
-                    } else {                            // mesh name == "shapeInset"
+                    } else {                          
                         //console.log(currInsetIndex)
                         mesh.rotation.y = Math.PI;
                         mesh.position.x = currInsetIndex * 3.75 - 2.8335;
