@@ -119,7 +119,7 @@ function setUI(type) {
             setColor(newValue);
         }).name("Color");
         
-        waveBraceletOptions.add(customOptions, "waveHeight", 0.1, 2, 0.1).onChange(function (newValue) {
+        waveBraceletOptions.add(customOptions, "waveHeight", 0.8, 2, 0.1).onChange(function (newValue) {
             setInsetScale(0, newValue, 'z');
         });
     } else if (type == "Shapes Bracelet") {
